@@ -1,0 +1,4 @@
+ofLifeGame
+==========
+
+openFrameworks -- life game
