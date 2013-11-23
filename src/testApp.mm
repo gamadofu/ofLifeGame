@@ -25,8 +25,10 @@ void testApp::setup(){
   font.loadFont("arial.ttf", 12);
  
   //アルファチャンネル(透明度)を使用可能に
-  
   ofSetFrameRate(1);
+  ofEnableBlendMode(OF_BLENDMODE_ADD);
+  img.loadImage("particle32.png");
+  ofEnableBlendMode(OF_BLENDMODE_ADD);
 }
 /*
  -1,-1 | -1, 0 | -1, +1
@@ -71,7 +73,7 @@ void testApp::update(){
 //--------------------------------------------------------------
 void testApp::draw(){
   // FPS
-  ofSetColor(185, 155, 100);
+  ofSetColor(255, 255, 255);
   string str = "fps: ";
   str += ofToString(ofGetFrameRate(), 2)+"fps";
   font.drawString(str,100, 26);
@@ -83,10 +85,6 @@ void testApp::draw(){
  
   
   ofEnableAlphaBlending();	// アルファブレンディングを開始
-  //混色を、加算混色に
-  glBlendFunc(GL_ONE, GL_ONE);
-  ofSetColor(102,255,102,87);	// 透明度50％
-  ofFill();
   int sum = 0;
   for (int i = 0; i < sizeof(cell_data) / sizeof(cell_data[0]); i++)
   {
@@ -94,7 +92,7 @@ void testApp::draw(){
     // セル描画
     int x = (i % MAX_CELL_SIZE) * CELL_PX;
     int y = (i / MAX_CELL_SIZE) * CELL_PX;
-    ofRect(x + 10, y + 50, CELL_PX - 1, CELL_PX  -1);
+    img.draw(x+10, y+50);
     sum++;
   }
   ofDisableAlphaBlending(); //終了

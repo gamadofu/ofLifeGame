@@ -24,13 +24,12 @@ public:
   void deviceOrientationChanged(int newOrientation);
  
   // ここから
-  int MAX_CELL_SIZE = 50; // セルのサイズ
-  int DISP_SIZE = 300; // 画面サイズ 360px
+  int MAX_CELL_SIZE = 20; // セルのサイズ
+  int DISP_SIZE = 200; // 画面サイズ 360px
   int CELL_PX;   // 1辺のピクセル数
-  int cell_data[2500];  // セルの情報配列
+  int cell_data[400];  // セルの情報配列
   int generation = 0; // 世代
+  ofImage img;
 private:
   ofTrueTypeFont font;
 };
-
-
